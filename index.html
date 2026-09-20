@@ -71,9 +71,9 @@
     .atlas-character-frame{position:relative;width:min(100%,620px);aspect-ratio:1}
     .atlas-character-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:sepia(.04) contrast(1.03);transition:opacity .16s ease}
     .atlas-highlight{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-    .muscle-highlight{fill:rgba(176,39,31,.58);stroke:#781c17;stroke-width:.55;vector-effect:non-scaling-stroke;mix-blend-mode:multiply;filter:drop-shadow(0 0 1.6px rgba(91,20,16,.52));transform-box:fill-box;transform-origin:center;animation:atlasPulse 2.8s ease-in-out infinite}
-    .muscle-highlight.deep{fill:rgba(119,35,28,.45);stroke-dasharray:1.2 1}
-    @keyframes atlasPulse{0%,100%{opacity:.76}50%{opacity:1}}
+    .atlas-note-line{fill:none;stroke:#4c3724;stroke-width:.48;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.8}
+    .atlas-note-dot{fill:#4c3724;opacity:.82}
+    .atlas-note-label{fill:#4c3724;font:italic 600 3.1px "Segoe Script","Lucida Handwriting","Apple Chancery",cursive;letter-spacing:.025em;paint-order:stroke;stroke:rgba(238,222,184,.92);stroke-width:1.25px;stroke-linejoin:round}
     .atlas-view-badge{position:absolute;top:12px;right:12px;z-index:4;border:1px solid var(--line);background:rgba(238,222,184,.9);padding:6px 8px;color:var(--red);font:800 8px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
     .atlas-image:before{z-index:3}.atlas-image figcaption{z-index:4}
     @media(max-width:850px){.atlas-figure-stage{padding:7px}.atlas-character-frame{width:min(100%,430px)}}
@@ -354,9 +354,16 @@ function atlasMuscleView(index){
 }
 function renderAtlasCharacter(m){
  const index=Math.max(0,muscles.indexOf(m)),img=$('#atlasMuscleArt');
- img.src=atlasMuscleImagesCorrected[index];img.alt=m.name+' highlighted on the Muscle Codex character';
- $('#atlasViewBadge').textContent=atlasMuscleView(index);
- const overlay=$('#atlasHighlight');if(overlay)overlay.innerHTML='';
+ const annotation=atlasHighlights[index]||atlasHighlights[0],spots=annotation.s||[[50,50,4,4,0]];
+ img.src=atlasCharacterViews[annotation.v]||atlasCharacterViews.front;img.alt=m.name+' location on the Muscle Codex character';
+ $('#atlasViewBadge').textContent=atlasViewLabels[annotation.v]||atlasMuscleView(index);
+ const targetX=spots.reduce((sum,spot)=>sum+spot[0],0)/spots.length;
+ const targetY=spots.reduce((sum,spot)=>sum+spot[1],0)/spots.length;
+ const labelOnRight=targetX<50,labelX=labelOnRight?72:28,labelY=Math.max(12,Math.min(88,targetY-7));
+ const elbowX=labelOnRight?62:38,lineEndX=labelOnRight?labelX-2:labelX+2;
+ const anchor=labelOnRight?'start':'end';
+ const overlay=$('#atlasHighlight');
+ if(overlay)overlay.innerHTML=`<path class="atlas-note-line" d="M ${targetX} ${targetY} Q ${elbowX} ${targetY-1} ${lineEndX} ${labelY+1}"/><circle class="atlas-note-dot" cx="${targetX}" cy="${targetY}" r=".9"/><text class="atlas-note-label" x="${labelX}" y="${labelY}" text-anchor="${anchor}">${m.name}</text>`;
 }
 const artLabels=['Upper chest · clavicular pectoralis','Back · latissimus dorsi','Posterior thigh · hamstrings','Shoulder · lateral deltoid','Anterior thigh · quadriceps','Upper arm · biceps brachii','Posterior arm · triceps brachii','Lower leg · gastrocnemius and soleus'];
 weeklyArtImages[3]=MUSCLE_CODEX_IMAGES["e9e0d54c8427563d"];
