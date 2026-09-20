@@ -25,6 +25,15 @@ https://YOUR-USERNAME.github.io/muscle-codex/
 
 Replace `index.html` with the newer version and commit the change. GitHub Pages will redeploy automatically.
 
+## Add it to your phone
+
+After GitHub Pages publishes the site, open its address on your phone.
+
+- **Android / Chrome:** open the browser menu and select **Add to Home screen** or **Install app**.
+- **iPhone / Safari:** tap **Share**, then select **Add to Home Screen**.
+
+The Muscle Codex seal will be used as the home-screen icon.
+
 ## Data and privacy
 
 Training selections, completed sets, and workout-log entries are stored in the browser's local storage. They are not uploaded to GitHub or sent to a server.
@@ -35,6 +44,8 @@ Because the data is device- and browser-specific, it will not automatically tran
 
 ```text
 index.html       Complete application and embedded artwork
+manifest.webmanifest  Installable-app name, colors, and icon settings
+icons/           Browser, Android, and iPhone app icons
 README.md        Setup and publishing instructions
 .nojekyll        Keeps GitHub Pages in simple static-site mode
 .gitignore       Excludes operating-system clutter and local archives
