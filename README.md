@@ -23,7 +23,7 @@ https://YOUR-USERNAME.github.io/muscle-codex/
 
 ## Updating the app
 
-Replace `index.html` with the newer version and commit the change. GitHub Pages will redeploy automatically.
+Upload all updated files, including the three `image-assets-*.js` files, and commit the change. GitHub Pages will redeploy automatically.
 
 ## Add it to your phone
 
@@ -43,8 +43,10 @@ Because the data is device- and browser-specific, it will not automatically tran
 ## Project structure
 
 ```text
-index.html       Complete application and embedded artwork
+index.html       Complete application interface and logic
+image-assets-*.js  Artwork split into GitHub-friendly files
 manifest.webmanifest  Installable-app name, colors, and icon settings
+service-worker.js    Android installation and offline-app support
 icons/           Browser, Android, and iPhone app icons
 README.md        Setup and publishing instructions
 .nojekyll        Keeps GitHub Pages in simple static-site mode
