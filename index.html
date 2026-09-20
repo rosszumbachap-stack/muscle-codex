@@ -68,15 +68,15 @@
     @media(max-width:850px){.week-logo{min-height:260px;padding:8px}.codex-seal{width:min(76%,290px);opacity:.24}}
     .atlas-image{display:grid;place-items:center;background:var(--paper2)}
     .atlas-figure-stage{position:absolute;inset:0;display:grid;place-items:center;padding:14px}
-    .atlas-character-frame{position:relative;width:min(100%,620px);aspect-ratio:1}
+    .atlas-character-frame{position:relative;width:min(108%,680px);aspect-ratio:1}
     .atlas-character-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:sepia(.04) contrast(1.03);transition:opacity .16s ease}
     .atlas-highlight{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
     .atlas-note-line{fill:none;stroke:#4c3724;stroke-width:.48;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.8}
     .atlas-note-dot{fill:#4c3724;opacity:.82}
-    .atlas-note-label{fill:#4c3724;font:italic 600 3.1px "Segoe Script","Lucida Handwriting","Apple Chancery",cursive;letter-spacing:.025em;paint-order:stroke;stroke:rgba(238,222,184,.92);stroke-width:1.25px;stroke-linejoin:round}
+    .atlas-note-label{fill:#3f2b1d;font:italic 700 4.25px "Segoe Script","Lucida Handwriting","Apple Chancery",cursive;letter-spacing:.02em;paint-order:stroke;stroke:rgba(238,222,184,.96);stroke-width:1.55px;stroke-linejoin:round}
     .atlas-view-badge{position:absolute;top:12px;right:12px;z-index:4;border:1px solid var(--line);background:rgba(238,222,184,.9);padding:6px 8px;color:var(--red);font:800 8px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
     .atlas-image:before{z-index:3}.atlas-image figcaption{z-index:4}
-    @media(max-width:850px){.atlas-figure-stage{padding:7px}.atlas-character-frame{width:min(100%,430px)}}
+    @media(max-width:850px){.atlas-figure-stage{padding:2px}.atlas-character-frame{width:108%}.atlas-note-label{font-size:4.8px}}
   </style>
   <style id="masculine-ui-refinement">
     :root{
@@ -288,15 +288,15 @@ const dialog=$('#exerciseDialog');$('.close').onclick=()=>dialog.close();dialog.
 const motionImages=[[MUSCLE_CODEX_IMAGES["1012a6d1b79b7562"],MUSCLE_CODEX_IMAGES["3a7cc5ea4169ef02"]],[MUSCLE_CODEX_IMAGES["5b16e2c3d8dae725"],MUSCLE_CODEX_IMAGES["34b89870624e9517"]],[MUSCLE_CODEX_IMAGES["5b21ec77edc987eb"],"images/paused-romanian-deadlift-bottom.webp"],[MUSCLE_CODEX_IMAGES["1637dbd9c6825d9a"],MUSCLE_CODEX_IMAGES["3c360ce6528989f7"]],[MUSCLE_CODEX_IMAGES["9203d00341dde2b4"],MUSCLE_CODEX_IMAGES["a1c09c32db46bc5b"]],[MUSCLE_CODEX_IMAGES["f0b12280beb287c1"],MUSCLE_CODEX_IMAGES["b2ed4f8eeda0af0a"]],[MUSCLE_CODEX_IMAGES["b897fc9e5d79c5cd"],MUSCLE_CODEX_IMAGES["f8accee51ef810c0"]]];
 const artImages=[MUSCLE_CODEX_IMAGES["e3cf0a58d7fd1c87"],MUSCLE_CODEX_IMAGES["7ffa2ff2a784911a"],MUSCLE_CODEX_IMAGES["209dda6330337ff5"],MUSCLE_CODEX_IMAGES["1b77e2663093e304"],MUSCLE_CODEX_IMAGES["70848e7f635a57be"],MUSCLE_CODEX_IMAGES["6937b7475e0efb56"],MUSCLE_CODEX_IMAGES["6a68deafd22f2b36"],MUSCLE_CODEX_IMAGES["c32ca60092b27721"]];
 const weeklyArtImages=[MUSCLE_CODEX_IMAGES["1cc49be9ce3b5cd1"],MUSCLE_CODEX_IMAGES["c17242fe2e0d6db4"],MUSCLE_CODEX_IMAGES["97d2ddc5d82406cc"],MUSCLE_CODEX_IMAGES["919d4689f8bd954e"],MUSCLE_CODEX_IMAGES["2e0a7de258c50700"],MUSCLE_CODEX_IMAGES["bd6ef71a03fb2ef9"],MUSCLE_CODEX_IMAGES["492da75865bbe01f"]];
-const atlasCharacterViews={front:weeklyArtImages[4],back:MUSCLE_CODEX_IMAGES["4fcf9e9a6f0b5b50"]};
+const atlasCharacterViews={front:'images/atlas-character-front.webp',back:'images/atlas-character-back.webp'};
 Object.defineProperties(atlasCharacterViews,{
- torsoFront:{get(){return weeklyArtImages[0]}},
- backUpper:{get(){return weeklyArtImages[1]}},
- shoulderFront:{get(){return weeklyArtImages[3]}},
- shoulderBack:{get(){return weeklyArtImages[6]}},
- armsFront:{get(){return weeklyArtImages[5]}},
- armsBack:{get(){return weeklyArtImages[6]}},
- legsFront:{get(){return weeklyArtImages[4]}},
+ torsoFront:{get(){return atlasCharacterViews.front}},
+ backUpper:{get(){return atlasCharacterViews.back}},
+ shoulderFront:{get(){return atlasCharacterViews.front}},
+ shoulderBack:{get(){return atlasCharacterViews.back}},
+ armsFront:{get(){return atlasCharacterViews.front}},
+ armsBack:{get(){return atlasCharacterViews.back}},
+ legsFront:{get(){return atlasCharacterViews.front}},
  legsBack:{get(){return atlasCharacterViews.back}}
 });
 const atlasViewLabels={torsoFront:'Torso · anterior',backUpper:'Back · posterior',shoulderFront:'Shoulder · anterior',shoulderBack:'Shoulder · posterior',armsFront:'Arm · anterior',armsBack:'Arm · posterior',legsFront:'Lower body · anterior',legsBack:'Lower body · posterior'};
@@ -337,6 +337,14 @@ const atlasHighlights=[
  {v:'legsBack',s:[[44,80,4,7,-5],[56,80,4,7,5]]},
  {v:'legsBack',d:1,s:[[45,86,3,5,0],[55,86,3,5,0]]}
 ];
+const atlasLabelPoints=[
+ [43,29],[43,34],[42,33],[50,45],[40,44],[38,37],
+ [40,36],[44,22],[43,29],[47,37],[43,30],[37,31],[47,43],
+ [34,27],[34,27],[64,27],[43,24],[42,29],[34,29],
+ [34,35],[35,39],[35,45],[66,35],[66,35],[66,39],
+ [43,52],[40,50],[47,66],[43,65],[40,65],[45,70],
+ [43,64],[47,64],[44,81],[45,87]
+];
 const atlasMuscleImages=[MUSCLE_CODEX_IMAGES["14db63efbe6760fb"],MUSCLE_CODEX_IMAGES["8ea05d34a30f4d59"],MUSCLE_CODEX_IMAGES["e1e681a12ebdb116"],MUSCLE_CODEX_IMAGES["c82832b81db9b34b"],MUSCLE_CODEX_IMAGES["3bcc786988ab73cc"],MUSCLE_CODEX_IMAGES["398fcc4ca1386c9e"],MUSCLE_CODEX_IMAGES["397e4e0a6ebc7544"],MUSCLE_CODEX_IMAGES["79fe4b2627b3d1a4"],MUSCLE_CODEX_IMAGES["c365a52e681da0b6"],MUSCLE_CODEX_IMAGES["52465bf57133c237"],MUSCLE_CODEX_IMAGES["77cba84bb993ee8d"],MUSCLE_CODEX_IMAGES["78882f3b2c793601"],MUSCLE_CODEX_IMAGES["5b26d07c88e5f4fd"],MUSCLE_CODEX_IMAGES["dab299776a6cecfa"],MUSCLE_CODEX_IMAGES["17490326e915d5c6"],MUSCLE_CODEX_IMAGES["b9cbc0325d74e7ec"],MUSCLE_CODEX_IMAGES["3445bb9aa31f60ea"],MUSCLE_CODEX_IMAGES["8f1ab116a7f684a5"],MUSCLE_CODEX_IMAGES["a4e9a08b3b5ac16d"],MUSCLE_CODEX_IMAGES["138a3a9cde04a36a"],MUSCLE_CODEX_IMAGES["80d8ea6eddac7c66"],MUSCLE_CODEX_IMAGES["ca042728d50403f7"],MUSCLE_CODEX_IMAGES["d747458029e7ac36"],MUSCLE_CODEX_IMAGES["3d22263d3b797cad"],MUSCLE_CODEX_IMAGES["0bd42c6a19cbbcbe"],MUSCLE_CODEX_IMAGES["40ecbb2da7f34022"],MUSCLE_CODEX_IMAGES["c0a4adb0a444383e"],MUSCLE_CODEX_IMAGES["8765265776863bdd"],MUSCLE_CODEX_IMAGES["a5dc5c19096f1b88"],MUSCLE_CODEX_IMAGES["450e055e9636dc43"],MUSCLE_CODEX_IMAGES["3b25f5b3f39d3191"],MUSCLE_CODEX_IMAGES["d4dbb962d7a1a1b6"],MUSCLE_CODEX_IMAGES["1ebc3f14ae30afac"],MUSCLE_CODEX_IMAGES["460e37ebfcf65894"],MUSCLE_CODEX_IMAGES["423a621197ca0354"]];
 const atlasMuscleImagesRefined=[MUSCLE_CODEX_IMAGES["db5b98f36e090c8e"],MUSCLE_CODEX_IMAGES["7c5272c46b2a64f5"],MUSCLE_CODEX_IMAGES["66e64df6b332e454"],MUSCLE_CODEX_IMAGES["74c7f53f7f101178"],MUSCLE_CODEX_IMAGES["8e1706320746a9c5"],MUSCLE_CODEX_IMAGES["7070dea34ae66edd"],MUSCLE_CODEX_IMAGES["817248e8db335fca"],MUSCLE_CODEX_IMAGES["58df3e2dafc6da26"],MUSCLE_CODEX_IMAGES["6892208ea61ca171"],MUSCLE_CODEX_IMAGES["703ac742738b916f"],MUSCLE_CODEX_IMAGES["2350e6527a48ea6f"],MUSCLE_CODEX_IMAGES["417e9e662631508a"],MUSCLE_CODEX_IMAGES["8c1ac24460933780"],MUSCLE_CODEX_IMAGES["0cd72c51970a6245"],MUSCLE_CODEX_IMAGES["99fb92d3c342223b"],MUSCLE_CODEX_IMAGES["c27f1fb1343d0e67"],MUSCLE_CODEX_IMAGES["79a58f4ff662a1c7"],MUSCLE_CODEX_IMAGES["f9b435cf511c6cd2"],MUSCLE_CODEX_IMAGES["04cd788992393550"],MUSCLE_CODEX_IMAGES["0ef3d5b7f458a98a"],MUSCLE_CODEX_IMAGES["0d1aba3028003b93"],MUSCLE_CODEX_IMAGES["f78dc031f8d65a98"],MUSCLE_CODEX_IMAGES["2369f8eb9cf27849"],MUSCLE_CODEX_IMAGES["68b0b03c862dd7fb"],MUSCLE_CODEX_IMAGES["81674b5b2f4a6aaf"],MUSCLE_CODEX_IMAGES["85e215cf4c49ceb6"],MUSCLE_CODEX_IMAGES["7855157743ab3136"],MUSCLE_CODEX_IMAGES["1c9cfabd6d60a185"],MUSCLE_CODEX_IMAGES["5232642fc1e748b2"],MUSCLE_CODEX_IMAGES["c8208be1f69a7ab2"],MUSCLE_CODEX_IMAGES["9bc140db5e8646a2"],MUSCLE_CODEX_IMAGES["31feb95f3e6b71f1"],MUSCLE_CODEX_IMAGES["ec2e4094268677b7"],MUSCLE_CODEX_IMAGES["86dba96899dfe419"],MUSCLE_CODEX_IMAGES["beeaf019fc518323"]];
 const atlasMuscleImagesCorrected=[MUSCLE_CODEX_IMAGES["db5b98f36e090c8e"],MUSCLE_CODEX_IMAGES["7c5272c46b2a64f5"],MUSCLE_CODEX_IMAGES["88cf585aabfe0caa"],MUSCLE_CODEX_IMAGES["74c7f53f7f101178"],MUSCLE_CODEX_IMAGES["8e1706320746a9c5"],MUSCLE_CODEX_IMAGES["7070dea34ae66edd"],MUSCLE_CODEX_IMAGES["817248e8db335fca"],MUSCLE_CODEX_IMAGES["6460cb0e31d62472"],MUSCLE_CODEX_IMAGES["81106589f13f5079"],MUSCLE_CODEX_IMAGES["1796784f26b36bf7"],MUSCLE_CODEX_IMAGES["ca1b72e3215e69b2"],MUSCLE_CODEX_IMAGES["5aa7e0ad4f67b643"],MUSCLE_CODEX_IMAGES["8c1ac24460933780"],MUSCLE_CODEX_IMAGES["0cd72c51970a6245"],MUSCLE_CODEX_IMAGES["99fb92d3c342223b"],MUSCLE_CODEX_IMAGES["c27f1fb1343d0e67"],MUSCLE_CODEX_IMAGES["b38a241844b992eb"],MUSCLE_CODEX_IMAGES["c37cc79750be034c"],MUSCLE_CODEX_IMAGES["b0e425f8c453c3bd"],MUSCLE_CODEX_IMAGES["d44c98db92358841"],MUSCLE_CODEX_IMAGES["f52af359cfa5c3b6"],MUSCLE_CODEX_IMAGES["4224baf74e1df49c"],MUSCLE_CODEX_IMAGES["a1ae4ea9871a3559"],MUSCLE_CODEX_IMAGES["e9cdd483be862ba4"],MUSCLE_CODEX_IMAGES["06125823283d784e"],MUSCLE_CODEX_IMAGES["e9c3e60be5e1934d"],MUSCLE_CODEX_IMAGES["62a5eabd2dbbcdd1"],MUSCLE_CODEX_IMAGES["1c9cfabd6d60a185"],MUSCLE_CODEX_IMAGES["5232642fc1e748b2"],MUSCLE_CODEX_IMAGES["c8208be1f69a7ab2"],MUSCLE_CODEX_IMAGES["9bc140db5e8646a2"],MUSCLE_CODEX_IMAGES["43197471ac635b0b"],MUSCLE_CODEX_IMAGES["f73e1c92c1109bd7"],MUSCLE_CODEX_IMAGES["86dba96899dfe419"],MUSCLE_CODEX_IMAGES["beeaf019fc518323"]];
@@ -357,8 +365,7 @@ function renderAtlasCharacter(m){
  const annotation=atlasHighlights[index]||atlasHighlights[0],spots=annotation.s||[[50,50,4,4,0]];
  img.src=atlasCharacterViews[annotation.v]||atlasCharacterViews.front;img.alt=m.name+' location on the Muscle Codex character';
  $('#atlasViewBadge').textContent=atlasViewLabels[annotation.v]||atlasMuscleView(index);
- const targetX=spots.reduce((sum,spot)=>sum+spot[0],0)/spots.length;
- const targetY=spots.reduce((sum,spot)=>sum+spot[1],0)/spots.length;
+ const point=atlasLabelPoints[index]||[spots[0][0],spots[0][1]],targetX=point[0],targetY=point[1];
  const labelOnRight=targetX<50,labelX=labelOnRight?72:28,labelY=Math.max(12,Math.min(88,targetY-7));
  const elbowX=labelOnRight?62:38,lineEndX=labelOnRight?labelX-2:labelX+2;
  const anchor=labelOnRight?'start':'end';

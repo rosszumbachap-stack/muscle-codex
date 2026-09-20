@@ -1,4 +1,4 @@
-const CACHE_NAME = 'muscle-codex-shell-v3';
+const CACHE_NAME = 'muscle-codex-shell-v4';
 const APP_FILES = [
   './manifest.webmanifest',
   './icons/favicon-32.png',
@@ -6,7 +6,9 @@ const APP_FILES = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/muscle-codex.svg',
-  './images/paused-romanian-deadlift-bottom.webp'
+  './images/paused-romanian-deadlift-bottom.webp',
+  './images/atlas-character-front.webp',
+  './images/atlas-character-back.webp'
 ];
 
 self.addEventListener('install', (event) => {
