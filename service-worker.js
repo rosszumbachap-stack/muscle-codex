@@ -1,11 +1,12 @@
-const CACHE_NAME = 'muscle-codex-shell-v1';
+const CACHE_NAME = 'muscle-codex-shell-v2';
 const APP_FILES = [
   './manifest.webmanifest',
   './icons/favicon-32.png',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './icons/muscle-codex.svg'
+  './icons/muscle-codex.svg',
+  './images/paused-romanian-deadlift-bottom.webp'
 ];
 
 self.addEventListener('install', (event) => {
