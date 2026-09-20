@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Muscle Codex</title>
+  <desc id="description">MC monogram anatomical seal</desc>
+  <rect width="512" height="512" rx="96" fill="#21170f"/>
+  <circle cx="256" cy="256" r="198" fill="#d9c7a2" opacity=".06"/>
+  <circle cx="256" cy="256" r="198" fill="none" stroke="#d9c7a2" stroke-width="13"/>
+  <circle cx="256" cy="256" r="171" fill="none" stroke="#7f2924" stroke-width="5"/>
+  <path d="M256 72v31M256 409v31M72 256h31M409 256h31M126 126l22 22M364 364l22 22M386 126l-22 22M148 364l-22 22" stroke="#a34838" stroke-width="9" stroke-linecap="square"/>
+  <path d="M256 137 375 256 256 375 137 256Z" fill="none" stroke="#d9c7a2" stroke-width="7" opacity=".72"/>
+  <path d="M147 256h49M316 256h49" stroke="#a34838" stroke-width="12"/>
+  <text x="256" y="310" text-anchor="middle" fill="#ead9b2" font-family="Georgia, 'Times New Roman', serif" font-size="160" font-weight="700" letter-spacing="-18">MC</text>
+  <circle cx="256" cy="256" r="217" fill="none" stroke="#a34838" stroke-width="3" opacity=".65"/>
+</svg>
