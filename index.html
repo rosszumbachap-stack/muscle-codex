@@ -541,15 +541,17 @@ const identityMotionImages=[
 ];
 motionImages.splice(0,motionImages.length,...identityMotionImages);
 const shirtlessAnatomyMotionImages=[
-[MUSCLE_CODEX_IMAGES["c2247f849f1e40b7"],MUSCLE_CODEX_IMAGES["8d1937016ca46307"]],
-[MUSCLE_CODEX_IMAGES["1b09fb020a2d8041"],MUSCLE_CODEX_IMAGES["e6be74c1f6e54363"]],
-[MUSCLE_CODEX_IMAGES["e9d0f470afafd6ad"],MUSCLE_CODEX_IMAGES["b1f401cbd10f5279"]],
-[MUSCLE_CODEX_IMAGES["e9fddb0f3a64866b"],MUSCLE_CODEX_IMAGES["81a774c31115e2fa"]],
-[MUSCLE_CODEX_IMAGES["7bb49e7cd97115b9"],MUSCLE_CODEX_IMAGES["1c97a14b37be472b"]],
-[MUSCLE_CODEX_IMAGES["7b667cda86608f93"],MUSCLE_CODEX_IMAGES["0f0f6a856e0e75ae"]],
-[MUSCLE_CODEX_IMAGES["6aeb87da2f013473"],MUSCLE_CODEX_IMAGES["d3d97260f2ab3493"]]
+["images/movements/incline-start.webp","images/movements/incline-finish.webp"],
+["images/movements/pulldown-start.webp","images/movements/pulldown-finish.webp"],
+["images/movements/rdl-start.webp","images/movements/rdl-finish.webp"],
+["images/movements/lateral-start.webp","images/movements/lateral-finish.webp"],
+["images/movements/hack-start.webp","images/movements/hack-finish.webp"],
+["images/movements/curl-start.webp","images/movements/curl-finish.webp"],
+["images/movements/triceps-start.webp","images/movements/triceps-finish.webp"]
 ];
 motionImages.splice(0,motionImages.length,...shirtlessAnatomyMotionImages);
+weeklyArtImages.splice(0,weeklyArtImages.length,...shirtlessAnatomyMotionImages.map(pair=>pair[0]));
+artImages.splice(0,artImages.length,...shirtlessAnatomyMotionImages.map(pair=>pair[1]),"images/hero-dynamic.webp");
 const now=new Date();$('.hero-copy .plate').textContent=`PLATE ${String(selectedDay+7).padStart(2,'0')} / FULL BODY · ${String.fromCharCode(65+selectedDay)}`;$('#dayNum').textContent=now.getDate();$('#monthYear').textContent=now.toLocaleString('en',{month:'short'}).toUpperCase()+' · '+now.getFullYear();renderExercises();renderWeek();renderFormLab();
 </script>
 <script>
