@@ -1,4 +1,4 @@
-const CACHE_NAME = 'muscle-codex-shell-v8';
+const CACHE_NAME = 'muscle-codex-shell-v9';
 const APP_FILES = [
   './manifest.webmanifest',
   './icons/favicon-32.png',
@@ -7,6 +7,7 @@ const APP_FILES = [
   './icons/icon-512.png',
   './icons/muscle-codex.svg',
   './images/paused-romanian-deadlift-bottom.webp',
+  './images/hero-dynamic.webp',
   './images/atlas-character-front.webp',
   './images/atlas-character-back.webp'
 ];
