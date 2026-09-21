@@ -204,13 +204,32 @@
     .hero-art{background-image:linear-gradient(90deg,var(--paper) 0,transparent 23%),url(MUSCLE_CODEX_IMAGES["a9f1ddad314dcc9e"])!important;background-size:100% 100%,contain!important;background-position:center,center!important;background-repeat:no-repeat!important}
     @media(max-width:850px){.hero-art{background-image:linear-gradient(0deg,var(--paper) 0,transparent 24%),url(MUSCLE_CODEX_IMAGES["a9f1ddad314dcc9e"])!important}}
   </style>
+  <style id="form-lab-styles">
+    .lab-intro{max-width:860px;margin:18px 0 24px;font:italic 18px/1.55 Georgia,serif;color:var(--muted)}
+    .lab-picker{display:grid;grid-template-columns:repeat(7,minmax(118px,1fr));gap:8px;margin:0 0 18px;overflow-x:auto;padding-bottom:6px}
+    .lab-pick{min-width:118px;border:1px solid var(--line);background:rgba(255,255,255,.16);padding:0;color:var(--ink);cursor:pointer;text-align:left}
+    .lab-pick img{display:block;width:100%;height:128px;object-fit:cover;object-position:center top;filter:sepia(.12) saturate(.86)}
+    .lab-pick span{display:block;padding:9px}.lab-pick b{display:block;font:700 11px/1.25 Arial,sans-serif;text-transform:uppercase}.lab-pick small{display:block;margin-top:5px;color:var(--muted);font:10px/1.3 Arial,sans-serif}
+    .lab-pick.active{border:2px solid var(--red);background:rgba(127,36,27,.08)}
+    .lab-stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(310px,.65fr);border:1px solid var(--line);background:rgba(255,255,255,.15)}
+    .lab-visuals{display:grid;grid-template-columns:1fr 1fr;min-width:0;border-right:1px solid var(--line)}
+    .lab-frame{position:relative;min-height:630px;margin:0;overflow:hidden;background:rgba(222,207,174,.45)}.lab-frame+ .lab-frame{border-left:1px solid var(--line)}
+    .lab-frame img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center top}.lab-frame figcaption{position:absolute;left:12px;bottom:12px;background:var(--ink);color:var(--paper2);padding:7px 10px;font:800 10px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+    .lab-detail{padding:28px}.lab-detail h3{font-size:34px;line-height:1;margin:7px 0 10px}.lab-target{font:italic 16px/1.4 Georgia,serif;color:var(--red);margin-bottom:22px}
+    .lab-facts{display:grid;gap:13px}.lab-fact{border-top:1px solid var(--line);padding-top:10px}.lab-fact b{display:block;margin-bottom:4px;font:800 10px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.lab-fact span{font:14px/1.5 Georgia,serif}
+    .force-route{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.force-route i{font-style:normal}.force-route i:not(:last-child):after{content:' →';color:var(--red);font-weight:700}
+    .lab-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+    .coverage-panel{margin-top:30px;border-top:2px solid var(--ink);padding-top:18px}.coverage-copy{max-width:720px;color:var(--muted);font:14px/1.5 Georgia,serif}.coverage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px 28px;margin-top:18px}.coverage-row{display:grid;grid-template-columns:92px 1fr 34px;gap:9px;align-items:center;font:800 10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}.coverage-bar{height:8px;background:rgba(48,38,28,.13)}.coverage-bar i{display:block;height:100%;background:var(--red)}
+    @media(max-width:1100px){.lab-stage{grid-template-columns:1fr}.lab-visuals{border-right:0;border-bottom:1px solid var(--line)}.lab-frame{min-height:520px}}
+    @media(max-width:650px){.lab-intro{font-size:16px}.lab-picker{grid-template-columns:repeat(7,132px)}.lab-pick img{height:150px}.lab-visuals{grid-template-columns:1fr}.lab-frame{min-height:520px}.lab-frame+ .lab-frame{border-left:0;border-top:1px solid var(--line)}.lab-detail{padding:22px 17px}.coverage-grid{grid-template-columns:1fr}}
+  </style>
   </head>
 <body>
 <div class="app">
   <aside class="rail">
     <div class="brand"><small>ANATOMICAL TRAINING · V2.0</small><h1>Muscle<br>Codex</h1><p>A study of force, form &amp; discipline</p></div>
     <nav class="nav" aria-label="Primary navigation">
-      <button class="active" data-page="today">I · Today's Study</button><button data-page="program">II · Weekly Program</button><button data-page="atlas">III · Anatomy Atlas</button>
+      <button class="active" data-page="today">I · Today's Study</button><button data-page="program">II · Weekly Program</button><button data-page="atlas">III · Form Lab</button>
     </nav>
     <div class="folio"><b>CODEX NO. 01</b><br>Male muscular anatomy<br>Personal training record<br><br>“The soul becomes dyed with the color of its thoughts.”<br>— Marcus Aurelius</div>
   </aside>
@@ -234,12 +253,18 @@
       <div class="week" id="week"></div>
     </section>
     <section class="page" id="atlas">
-      <header class="topline"><div><span class="eyebrow">Folio III · Male muscular anatomy</span><h2>Anatomy Atlas</h2></div><div class="datebox"><strong>XXXV</strong><span>STRUCTURES CATALOGUED</span></div></header>
-      <div class="atlas-hero"><figure class="atlas-image"><div class="atlas-figure-stage" id="atlasFigureStage"><div class="atlas-character-frame"><img id="atlasMuscleArt" alt="Character anatomy with selected muscle highlighted"><svg class="atlas-highlight" id="atlasHighlight" viewBox="0 0 100 100" aria-hidden="true"></svg></div><span class="atlas-view-badge" id="atlasViewBadge">Anterior view</span></div><figcaption id="atlasPlateLabel">Torso · Pectoralis major</figcaption></figure><div class="atlas-panel"><span class="plate">SELECT REGION, THEN STRUCTURE</span><div class="region-pills" id="regionPills"></div><div class="muscle-pills structure-pills" id="musclePills"></div><h3 id="muscleName"></h3><p class="latin" id="muscleLatin"></p><p class="atlas-summary" id="muscleSummary"></p><div class="atlas-facts" id="atlasFacts"></div><div class="atlas-notes"><article class="atlas-note"><h4>Common compensation</h4><p id="muscleCompensation"></p></article><article class="atlas-note"><h4>Training cue</h4><p id="muscleCue"></p></article></div><h4 class="eyebrow" style="margin:17px 0 8px">RELATED MOVEMENTS</h4><ul class="atlas-exercises" id="atlasExercises"></ul><button class="primary" id="atlasStudy">Open linked exercise</button></div></div>
+      <header class="topline"><div><span class="eyebrow">Folio III · Movement mechanics</span><h2>Form Lab</h2></div><div class="datebox"><strong>VII</strong><span>MOVEMENTS CATALOGUED</span></div></header>
+      <p class="lab-intro">Study the whole movement—not isolated painted regions. Select an exercise to compare the start and finish positions, trace its force path, and review the cue that keeps the form sound.</p>
+      <div class="lab-picker" id="labPicker" aria-label="Choose a movement"></div>
+      <div class="lab-stage">
+        <div class="lab-visuals"><figure class="lab-frame"><img id="labStart" alt=""><figcaption>Start position</figcaption></figure><figure class="lab-frame"><img id="labFinish" alt=""><figcaption>Finish position</figcaption></figure></div>
+        <article class="lab-detail"><span class="plate">MOVEMENT STUDY</span><h3 id="labTitle"></h3><p class="lab-target" id="labTarget"></p><div class="lab-facts"><div class="lab-fact"><b>Primary structure</b><span id="labPrimary"></span></div><div class="lab-fact"><b>Joint mechanics</b><span id="labJoint"></span></div><div class="lab-fact"><b>Applied force</b><span id="labForce"></span></div><div class="lab-fact"><b>Force path</b><span class="force-route" id="labRoute"></span></div><div class="lab-fact"><b>Common leak</b><span id="labLeak"></span></div><div class="lab-fact"><b>Execution cue</b><span id="labCue"></span></div></div><div class="lab-actions"><button class="primary" id="labOpen">Open full study</button></div></article>
+      </div>
+      <section class="coverage-panel"><div class="section-title"><h3>Muscle Coverage</h3><span>PROGRAM EMPHASIS</span></div><p class="coverage-copy">A readable overview of how the current seven-day rotation distributes work. The bars show relative programming emphasis, not painted anatomical boundaries.</p><div class="coverage-grid" id="labCoverage"></div></section>
     </section>
   </main>
 </div>
-<nav class="bottom-nav" aria-label="Mobile navigation"><button class="active" data-page="today">Today</button><button data-page="program">Program</button><button data-page="atlas">Atlas</button></nav>
+<nav class="bottom-nav" aria-label="Mobile navigation"><button class="active" data-page="today">Today</button><button data-page="program">Program</button><button data-page="atlas">Form Lab</button></nav>
 <dialog id="exerciseDialog"><div class="modal-grid"><div class="modal-art" role="img" aria-label="Targeted male muscle anatomy study" data-label="Upper chest · clavicular pectoralis"><img id="muscleArt" alt="Upper chest anatomy study" src=MUSCLE_CODEX_IMAGES["e3cf0a58d7fd1c87"]></div><div class="modal-content"><button class="close" aria-label="Close exercise study">×</button><span class="eyebrow">ANATOMICAL EXERCISE STUDY</span><h2 id="dialogTitle">Incline Dumbbell Press</h2><p id="dialogTarget">Primary: clavicular pectoralis major · Secondary: anterior deltoid, triceps</p><div class="tabs"><button class="active" data-tab="anatomy">Anatomy</button><button data-tab="biomech">Biomechanics</button><button data-tab="flow">Force Flow</button><button data-tab="technique">Technique</button><button data-tab="log">Log</button></div><div id="tabContent"></div></div></div></dialog>
 <div class="toast" id="toast" role="status"></div>
 <script src="image-assets-1.js"></script>
@@ -276,12 +301,13 @@ function renderWeek(){
   $('#week').innerHTML=weeks.map((d,i)=>`<article class="day ${i===selectedDay?'active':''}"><div class="day-art"><img src="${weeklyArtImages[i]}" alt="${artLabels[i]} anatomical plate"><span class="day-index">${String(i+1).padStart(2,'0')}</span></div><div class="day-body"><div class="day-head"><div><b>DAY ${String(i+1).padStart(2,'0')} - ${d[1].toUpperCase()}</b><small>${d[0]} / Plate ${String(i+7).padStart(2,'0')}</small></div><span class="day-status">${i===selectedDay?'Current study':'Available'}</span></div><ol class="day-exercises">${programNames[i].map(name=>`<li>${name}</li>`).join('')}</ol><button class="day-load" data-day="${i}">${i===selectedDay?'Loaded for today':'Load today’s study'}</button></div></article>`).join('')+`<figure class="week-logo" aria-label="Faded Muscle Codex insignia"><div class="codex-seal"><svg viewBox="0 0 420 420" role="img" aria-label="Muscle Codex monogram seal"><g class="seal-ink"><circle cx="210" cy="210" r="174"/><circle cx="210" cy="210" r="151"/><rect x="102" y="102" width="216" height="216" transform="rotate(45 210 210)"/><path d="M210 34v42M210 344v42M34 210h42M344 210h42M89 89l30 30M301 301l30 30M331 89l-30 30M119 301l-30 30"/><path class="seal-bar" d="M98 210h48m128 0h48M132 194v32m156-32v32"/></g><text class="seal-title" x="210" y="82">MUSCLE CODEX</text><text class="seal-monogram" x="210" y="251">MC</text><text class="seal-motto" x="210" y="350">FORM - FORCE - DISCIPLINE</text><text class="seal-version" x="210" y="375">ANATOMICAL TRAINING - V2.0</text></svg></div></figure>`;
   $$('[data-day]').forEach(button=>button.onclick=()=>{selectedDay=+button.dataset.day;localStorage.setItem('codex-day',selectedDay);exercises=programs[selectedDay];completed=JSON.parse(localStorage.getItem('codex-completed-'+selectedDay)||'[]');$('.hero-copy .plate').textContent=`PLATE ${String(selectedDay+7).padStart(2,'0')} / FULL BODY · ${String.fromCharCode(65+selectedDay)}`;renderExercises();renderWeek();navigate('today');toast(`${weeks[selectedDay][1]} loaded`)})
 }
-function renderAtlas(){
-  const regions=[...new Set(muscles.map(m=>m.region))];let activeRegion=regions[0];
-  $('#regionPills').innerHTML=regions.map((region,i)=>`<button class="${i?'':'active'}" data-region="${region}">${region}</button>`).join('');
-  function showRegion(region){activeRegion=region;$$('[data-region]').forEach(button=>button.classList.toggle('active',button.dataset.region===region));const subset=muscles.filter(m=>m.region===region);$('#musclePills').innerHTML=subset.map((m,i)=>`<button class="${i?'':'active'}" data-structure="${m.name}">${m.name}</button>`).join('');$$('[data-structure]').forEach(button=>button.onclick=()=>selectMuscle(muscles.find(m=>m.name===button.dataset.structure)));selectMuscle(subset[0]);}
-  function selectMuscle(m){$$('[data-structure]').forEach(button=>button.classList.toggle('active',button.dataset.structure===m.name));renderAtlasCharacter(m);$('#atlasPlateLabel').textContent=m.region+' · '+m.name;$('#muscleName').textContent=m.name;$('#muscleLatin').textContent=m.latin;$('#muscleSummary').textContent=m.summary;$('#atlasFacts').innerHTML=`<div class="anatomy-fact"><b>Precise origin</b><span>${m.origin}</span></div><div class="anatomy-fact"><b>Precise insertion</b><span>${m.insertion}</span></div><div class="anatomy-fact"><b>Innervation</b><span>${m.innervation}</span></div><div class="anatomy-fact"><b>Joint actions</b><span>${m.actions}</span></div><div class="anatomy-fact"><b>Fibre architecture</b><span>${m.fibers}</span></div><div class="anatomy-fact"><b>Training mechanics</b><span>${m.training}</span></div>`;$('#muscleCompensation').textContent=m.compensation;$('#muscleCue').textContent=m.cue;$('#atlasExercises').innerHTML=m.exercises.map(ex=>`<li>${ex}</li>`).join('');activeExercise=m.exerciseIndex;$('#atlasStudy').textContent='Open '+exercises[m.exerciseIndex].name;}
-  $$('[data-region]').forEach(button=>button.onclick=()=>showRegion(button.dataset.region));showRegion(activeRegion);
+function renderFormLab(){
+  const picker=$('#labPicker');if(!picker)return;
+  const coverage=[['Chest',86],['Back',92],['Delts',78],['Glutes',88],['Quads',80],['Hamstrings',72],['Arms',95]];
+  picker.innerHTML=exercises.map((e,i)=>`<button class="lab-pick ${i===activeExercise?'active':''}" data-lab="${i}"><img src="${motionImages[i][0]}" alt="${e.name} start position"><span><b>${String(i+1).padStart(2,'0')} · ${e.name}</b><small>${e.primary}</small></span></button>`).join('');
+  $('#labCoverage').innerHTML=coverage.map(([name,value])=>`<div class="coverage-row"><span>${name}</span><div class="coverage-bar"><i style="width:${value}%"></i></div><b>${value}</b></div>`).join('');
+  function selectMovement(index){activeExercise=index;const e=exercises[index];$$('[data-lab]').forEach(button=>button.classList.toggle('active',+button.dataset.lab===index));$('#labTitle').textContent=e.name;$('#labTarget').textContent=e.target;$('#labPrimary').textContent=e.primary;$('#labJoint').textContent=e.joint;$('#labForce').textContent=e.force;$('#labLeak').textContent=e.leak;$('#labCue').textContent=e.cue;$('#labStart').src=motionImages[index][0];$('#labFinish').src=motionImages[index][1];$('#labStart').alt=e.name+' start position';$('#labFinish').alt=e.name+' finish position';$('#labRoute').innerHTML=e.path.map(step=>`<i>${step}</i>`).join('');$('#labOpen').onclick=()=>openStudy(index);}
+  $$('[data-lab]').forEach(button=>button.onclick=()=>selectMovement(+button.dataset.lab));selectMovement(Math.min(activeExercise,exercises.length-1));
 }
 function renderProgress(){const data=[['Chest',86],['Back',92],['Delts',78],['Glutes',88],['Quads',80],['Hams',72],['Arms',95]];$('#coverage').innerHTML=data.map(x=>`<div class="coverage-row"><span>${x[0]}</span><div class="bar"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');$('#history').innerHTML=Array.from({length:84},(_,i)=>`<i class="${i%9===0?'':i%4===0?'mid':'hot'}"></i>`).join('')}
 const dialog=$('#exerciseDialog');$('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
@@ -525,7 +551,7 @@ const shirtlessAnatomyMotionImages=[
 [MUSCLE_CODEX_IMAGES["6aeb87da2f013473"],MUSCLE_CODEX_IMAGES["d3d97260f2ab3493"]]
 ];
 motionImages.splice(0,motionImages.length,...shirtlessAnatomyMotionImages);
-const now=new Date();$('.hero-copy .plate').textContent=`PLATE ${String(selectedDay+7).padStart(2,'0')} / FULL BODY · ${String.fromCharCode(65+selectedDay)}`;$('#dayNum').textContent=now.getDate();$('#monthYear').textContent=now.toLocaleString('en',{month:'short'}).toUpperCase()+' · '+now.getFullYear();renderExercises();renderWeek();renderAtlas();
+const now=new Date();$('.hero-copy .plate').textContent=`PLATE ${String(selectedDay+7).padStart(2,'0')} / FULL BODY · ${String.fromCharCode(65+selectedDay)}`;$('#dayNum').textContent=now.getDate();$('#monthYear').textContent=now.toLocaleString('en',{month:'short'}).toUpperCase()+' · '+now.getFullYear();renderExercises();renderWeek();renderFormLab();
 </script>
 <script>
 if ('serviceWorker' in navigator && /^https?:$/.test(window.location.protocol)) {
