@@ -1,6 +1,6 @@
 # Muscle Codex 2.0
 
-A mobile-friendly anatomical training log combining a seven-day program, exercise studies, biomechanics notes, and a muscle atlas.
+A mobile-friendly anatomical training log combining a five-day full-body program with two recovery days, exercise studies, biomechanics notes, and a muscle atlas.
 
 ## Run locally
 
@@ -36,7 +36,7 @@ The Muscle Codex seal will be used as the home-screen icon.
 
 ## Data and privacy
 
-Training selections, completed sets, and workout-log entries are stored in the browser's local storage. They are not uploaded to GitHub or sent to a server.
+Training selections, exercise completion, and workout-log entries are stored in the browser's local storage. They are not uploaded to GitHub or sent to a server.
 
 Because the data is device- and browser-specific, it will not automatically transfer to another phone or browser. Clearing site data can also remove it.
 
@@ -53,6 +53,10 @@ README.md        Setup and publishing instructions
 .gitignore       Excludes operating-system clutter and local archives
 .gitattributes   Prevents enormous image-data diffs in GitHub
 ```
+
+## Current weekly program
+
+Five full-body workouts (Monday–Friday) emphasizing glutes, hamstrings, chest, back, and shoulders. Saturday and Sunday are rest and optional gentle-mobility days. New workout completion and load logs use distinct storage keys so records from the previous seven-day rotation are not incorrectly shown under new movements.
 
 ## Version
 
