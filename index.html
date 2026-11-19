@@ -40,7 +40,7 @@
     .week-anatomy-plate{border:0;background:transparent;overflow:visible;display:flex;align-items:center;justify-content:center;padding:14px 22px}.week-anatomy-plate:after{display:none}.week-anatomy-plate img{width:100%;height:100%;object-fit:contain;object-position:center;opacity:.32;mix-blend-mode:multiply;filter:sepia(.65) grayscale(.18) contrast(.82) brightness(1.08);transform:rotate(-1.2deg) scale(.96);-webkit-mask-image:radial-gradient(ellipse 72% 82% at center,#000 42%,rgba(0,0,0,.78) 66%,transparent 100%);mask-image:radial-gradient(ellipse 72% 82% at center,#000 42%,rgba(0,0,0,.78) 66%,transparent 100%)}
     .week-anatomy-plate{border:0!important;outline:0!important;box-shadow:none!important;background:none!important;padding:8px 28px;overflow:visible}.week-anatomy-plate canvas{display:block;max-width:100%;width:auto;height:100%;margin:auto;opacity:.58;mix-blend-mode:multiply;filter:blur(.12px);transform:rotate(-1.4deg) scale(.94);-webkit-mask-image:radial-gradient(ellipse 68% 84% at 50% 48%,#000 38%,rgba(0,0,0,.72) 64%,transparent 96%);mask-image:radial-gradient(ellipse 68% 84% at 50% 48%,#000 38%,rgba(0,0,0,.72) 64%,transparent 96%)}
   </style>
-  <style id="five-day-program-adjustments">
+  <style id="five-day-program-adjustments">\n    dialog[open]{display:block!important;position:fixed;z-index:9999;inset:0;margin:auto;max-height:90dvh}\n    dialog[open]::backdrop{background:rgba(0,0,0,.75)}
     .prescription{color:var(--red);font:700 10px Arial,Helvetica,sans-serif;white-space:nowrap}
     .day-rest{background:rgba(228,211,176,.45)}
     .day-rest .day-art img{filter:sepia(.45) grayscale(.18);opacity:.7}
@@ -244,7 +244,7 @@
 </div>
 <nav class="bottom-nav" aria-label="Mobile navigation"><button class="active" data-page="today">Today</button><button data-page="program">Program</button></nav>
 <dialog id="exerciseDialog"><div class="modal-grid"><div class="modal-art" role="img" aria-label="Targeted male muscle anatomy study" data-label="Upper chest · clavicular pectoralis"><img id="muscleArt" alt="Upper chest anatomy study" src="images/movements/curl-start.webp"></div><div class="modal-content"><button class="close" aria-label="Close exercise study">×</button><span class="eyebrow">ANATOMICAL EXERCISE STUDY</span><h2 id="dialogTitle">Incline Dumbbell Press</h2><p id="dialogTarget">Primary: clavicular pectoralis major · Secondary: anterior deltoid, triceps</p><div class="tabs"><button class="active" data-tab="anatomy">Anatomy</button><button data-tab="biomech">Biomechanics</button><button data-tab="flow">Force Flow</button><button data-tab="technique">Technique</button><button data-tab="log">Log</button></div><div id="tabContent"></div></div></div></dialog>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="toast" role="status"></div><div id="codex-error" hidden style="position:fixed;bottom:75px;left:12px;right:12px;z-index:99999;background:#681d17;color:white;padding:12px;font:13px Arial"></div>
 <script>
 const baseExercises=[
  {name:'Incline Dumbbell Press',target:'Upper chest · anterior deltoid · triceps',primary:'Clavicular pectoralis major',joint:'Shoulder horizontal adduction with a flexion component, plus elbow extension.',force:'Gravity pulls the dumbbells downward. The upper chest drives the humerus upward and inward while the triceps extend the elbows.',path:['Hands','Forearms','Elbows','Shoulder','Upper chest'],leak:'Shoulders rolling forward, wrists bending back, or pressing too vertically.',cue:'Set the shoulder blades, keep wrists stacked, and press upward with a slight inward intention.'},
@@ -284,8 +284,8 @@ function renderTodayOverview(){
 function renderExercises(){
   const list=$('#exerciseList');
   list.innerHTML=exercises.length?exercises.map((e,i)=>'<article class="exercise"><div class="ex-number">'+String(i+1).padStart(2,'0')+'</div><div class="ex-main"><h4>'+e.name+'</h4><p>'+e.target+' · '+(e.sets?e.sets+' × '+e.reps:e.reps+' · warm-up')+'</p></div><div class="ex-actions"><button class="study" data-study="'+i+'">Study anatomy</button><button class="set-toggle '+(completed.includes(i)?'done':'')+'" data-done="'+i+'" aria-label="Mark '+e.name+' complete">✓</button></div></article>').join(''):'<div class="paper-card"><h3>Recovery is the assignment</h3><p>'+weekPlan[selectedDay].difference+'</p><p>'+weekPlan[selectedDay].goal+'</p></div>';
-  $('[data-study]').forEach(b=>b.onclick=()=>openStudy(+b.dataset.study));
-  $('[data-done]').forEach(b=>b.onclick=()=>toggleDone(+b.dataset.done));
+  $('[data-study]').forEach(b=>b.onclick=(event)=>{event.preventDefault();openStudy(+b.dataset.study)});
+  $('[data-done]').forEach(b=>b.onclick=(event)=>{event.preventDefault();toggleDone(+b.dataset.done)});
   updateCompletion();
 }
 function toggleDone(i){completed=completed.includes(i)?completed.filter(x=>x!==i):[...completed,i];localStorage.setItem('codex-glute26-completed-'+selectedDay,JSON.stringify(completed));renderExercises();toast(completed.includes(i)?'Movement entered in the record':'Movement removed from the record')}
@@ -310,7 +310,7 @@ function renderWeek(){
   });
 }
 function renderProgress(){const data=[['Chest',86],['Back',92],['Delts',78],['Glutes',88],['Quads',80],['Hams',72],['Arms',95]];$('#coverage').innerHTML=data.map(x=>`<div class="coverage-row"><span>${x[0]}</span><div class="bar"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');$('#history').innerHTML=Array.from({length:84},(_,i)=>`<i class="${i%9===0?'':i%4===0?'mid':'hot'}"></i>`).join('')}
-const dialog=$('#exerciseDialog');$('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+const dialog=$('#exerciseDialog');$('.close').onclick=()=>{if(dialog.open)dialog.close();else{dialog.removeAttribute('open');dialog.style.display='none'}};dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 const motionImages=[["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/paused-romanian-deadlift-bottom.webp"],["images/movements/lateral-start.webp","images/movements/hack-start.webp"],["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/movements/lateral-start.webp"]];
 const artImages=["images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
 const weeklyArtImages=["images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
@@ -417,7 +417,8 @@ function openStudy(i){
   $('#dialogTarget').textContent='Primary: '+e.primary+' · '+e.target;
   renderTab('anatomy');
   $('.tabs button').forEach((b,n)=>b.classList.toggle('active',n===0));
-  dialog.showModal();
+  try { if (!dialog.open) dialog.showModal(); } catch (error) { dialog.setAttribute('open',''); dialog.style.display='block'; }
+  dialog.scrollTop=0;
 }
 $$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderTab(b.dataset.tab)});
 function renderTab(tab){
@@ -579,6 +580,16 @@ const shirtlessAnatomyMotionImages=[
 motionImages.splice(0,motionImages.length,...shirtlessAnatomyMotionImages);
 weeklyArtImages.splice(0,weeklyArtImages.length,...shirtlessAnatomyMotionImages.map(pair=>pair[0]));
 artImages.splice(0,artImages.length,...shirtlessAnatomyMotionImages.map(pair=>pair[1]),"images/hero-dynamic.webp");
+document.addEventListener('click',event=>{
+  const study=event.target.closest('[data-study]');
+  if(study){event.preventDefault();event.stopPropagation();openStudy(Number(study.dataset.study));return;}
+  const done=event.target.closest('[data-done]');
+  if(done){event.preventDefault();event.stopPropagation();toggleDone(Number(done.dataset.done));return;}
+},true);
+window.addEventListener('error',event=>{
+  const banner=document.getElementById('codex-error');
+  if(banner){banner.textContent='App error: '+(event.message||'Unknown error');banner.hidden=false;}
+});
 const now=new Date();$('#dayNum').textContent=now.getDate();$('#monthYear').textContent=now.toLocaleString('en',{month:'short'}).toUpperCase()+' · '+now.getFullYear();renderTodayOverview();renderExercises();renderWeek();
 </script>
 <script>
