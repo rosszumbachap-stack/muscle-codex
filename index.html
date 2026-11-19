@@ -297,7 +297,7 @@ function drawFadedTorso(){
 function renderWeek(){
   $('#week').innerHTML=weekPlan.map((day,i)=>{
     const entries=programs[i].length?programs[i].map(e=>'<li>'+e.name+' <span class="prescription">'+(e.sets?e.sets+' × '+e.reps:e.reps)+'</span></li>').join(''):'<li>Rest from resistance training</li><li>Optional gentle walking or mobility</li>';
-    const art=i<5?weeklyArtImages[i]:'images/atlas-character-back.webp';
+    const art='images/atlas-character-front.webp';
     return '<article class="day '+(i===selectedDay?'active ':'')+(i>=5?'day-rest':'')+'"><div class="day-art"><img src="'+art+'" alt="'+(artLabels[i]||'Anatomical')+' anatomical plate"><span class="day-index">'+String(i+1).padStart(2,'0')+'</span></div><div class="day-body"><div class="day-head"><div><b>DAY '+String(i+1).padStart(2,'0')+' - '+day.title.toUpperCase()+'</b><small>'+day.short+' / '+day.subtitle+'</small></div><span class="day-status">'+(i===selectedDay?'Current study':i>=5?'Recovery':'Available')+'</span></div><ol class="day-exercises">'+entries+'</ol><button class="day-load" data-day="'+i+'">'+(i===selectedDay?'Loaded for today':i>=5?'View recovery day':'Load today’s study')+'</button></div></article>';
   }).join('')+`<figure class="week-logo" aria-label="Faded Muscle Codex insignia"><div class="codex-seal"><svg viewBox="0 0 420 420" role="img" aria-label="Muscle Codex monogram seal"><g class="seal-ink"><circle cx="210" cy="210" r="174"/><circle cx="210" cy="210" r="151"/><rect x="102" y="102" width="216" height="216" transform="rotate(45 210 210)"/><path d="M210 34v42M210 344v42M34 210h42M344 210h42M89 89l30 30M301 301l30 30M331 89l-30 30M119 301l-30 30"/><path class="seal-bar" d="M98 210h48m128 0h48M132 194v32m156-32v32"/></g><text class="seal-title" x="210" y="82">MUSCLE CODEX</text><text class="seal-monogram" x="210" y="251">MC</text><text class="seal-motto" x="210" y="350">FORM - FORCE - DISCIPLINE</text><text class="seal-version" x="210" y="375">ANATOMICAL TRAINING - V2.0</text></svg></div></figure>`;
   $$('[data-day]').forEach(button=>button.onclick=()=>{
@@ -311,9 +311,18 @@ function renderWeek(){
 }
 function renderProgress(){const data=[['Chest',86],['Back',92],['Delts',78],['Glutes',88],['Quads',80],['Hams',72],['Arms',95]];$('#coverage').innerHTML=data.map(x=>`<div class="coverage-row"><span>${x[0]}</span><div class="bar"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');$('#history').innerHTML=Array.from({length:84},(_,i)=>`<i class="${i%9===0?'':i%4===0?'mid':'hot'}"></i>`).join('')}
 const dialog=$('#exerciseDialog');$('.close').onclick=()=>{if(dialog.open)dialog.close();else{dialog.removeAttribute('open');dialog.style.display='none'}};dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-const motionImages=[["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/paused-romanian-deadlift-bottom.webp"],["images/movements/lateral-start.webp","images/movements/hack-start.webp"],["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/movements/lateral-start.webp"]];
-const artImages=["images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
-const weeklyArtImages=["images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
+const exactMovementPlates={
+ 'Incline Dumbbell Press':['images/movements/incline-start.webp','images/movements/incline-finish.webp'],
+ 'Lat Pulldown':['images/movements/pulldown-start.webp','images/movements/pulldown-finish.webp'],
+ 'Neutral-Grip Lat Pulldown':['images/movements/pulldown-start.webp','images/movements/pulldown-finish.webp'],
+ 'Hack Squat':['images/movements/hack-start.webp','images/movements/hack-finish.webp'],
+ 'Cable Lateral Raise':['images/movements/lateral-start.webp','images/movements/lateral-finish.webp'],
+ 'Lateral Raise':['images/movements/lateral-start.webp','images/movements/lateral-finish.webp'],
+ 'Romanian Deadlift':['images/movements/rdl-start.webp','images/movements/rdl-finish.webp']
+};
+const motionImages=[];
+const artImages=[];
+const weeklyArtImages=Array(7).fill('images/atlas-character-front.webp');
 const atlasCharacterViews={front:'images/atlas-character-front.webp',back:'images/atlas-character-back.webp'};
 Object.defineProperties(atlasCharacterViews,{
  torsoFront:{get(){return atlasCharacterViews.front}},
@@ -409,10 +418,12 @@ function openStudy(i){
   activeExercise=i;
   const e=exercises[i],index=e.artIndex||0;
   const art=$('.modal-art'),muscleArt=$('#muscleArt');
-  muscleArt.src=e.name==='Standing Calf Raise'?'images/atlas-character-back.webp':artImages[index];
-  muscleArt.alt=e.primary+' anatomy study';
-  art.dataset.label=e.primary;
-  art.setAttribute('aria-label',e.primary+' anatomical study');
+  const plate=exactMovementPlates[e.name];
+  muscleArt.hidden=!plate;
+  muscleArt.style.display=plate?'block':'none';
+  if(plate){muscleArt.src=plate[0];muscleArt.alt=e.name+' — starting position';}
+  art.dataset.label=plate?e.name+' · start position':'Exercise illustration not yet available';
+  art.setAttribute('aria-label',plate?e.name+' exercise study':'No verified exercise illustration available for '+e.name);
   $('#dialogTitle').textContent=e.name;
   $('#dialogTarget').textContent='Primary: '+e.primary+' · '+e.target;
   renderTab('anatomy');
@@ -423,7 +434,8 @@ function openStudy(i){
 $$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderTab(b.dataset.tab)});
 function renderTab(tab){
   const e=exercises[activeExercise],c=$('#tabContent');
-  const anatomyPlate=e.exactPlate&&motionImages[e.artIndex]?'<div class="movement-study"><h4>Movement sequence</h4><div class="movement-pair"><figure class="movement-frame"><img src="'+motionImages[e.artIndex][0]+'" alt="'+e.name+' starting position"><figcaption>01 · Start</figcaption></figure><figure class="movement-frame"><img src="'+motionImages[e.artIndex][1]+'" alt="'+e.name+' finishing position"><figcaption>02 · Finish</figcaption></figure></div></div>':'<div class="callout blue"><h4>Anatomical reference</h4><p>This plate illustrates the muscle region, not a step-by-step demonstration of this particular exercise.</p></div>';
+  const plate=exactMovementPlates[e.name];
+  const anatomyPlate=plate?'<div class="movement-study"><h4>Movement sequence</h4><div class="movement-pair"><figure class="movement-frame"><img src="'+plate[0]+'" alt="'+e.name+' starting position"><figcaption>01 · Start</figcaption></figure><figure class="movement-frame"><img src="'+plate[1]+'" alt="'+e.name+' finishing position"><figcaption>02 · Finish</figcaption></figure></div></div>':'<div class="callout blue"><h4>Exercise-specific illustration pending</h4><p>No verified illustration is available for this movement yet. Technique and biomechanics information below refers to '+e.name+'.</p></div>';
   const logRows=Array.from({length:e.sets},(_,i)=>i+1).map(n=>'<tr><td>'+n+'</td><td><input inputmode="decimal" data-log="codex-glute26-weight-'+selectedDay+'-'+activeExercise+'-'+n+'" placeholder="lb"></td><td><input inputmode="numeric" data-log="codex-glute26-reps-'+selectedDay+'-'+activeExercise+'-'+n+'" placeholder="0"></td></tr>').join('');
   const content={
     anatomy:'<div class="tabpane active"><div class="callout"><h4>Primary structure</h4><p>'+e.primary+'</p></div><div class="callout"><h4>Supporting structures</h4><p>'+e.target+'</p></div><p>The anatomical study highlights structures used during the movement.</p>'+anatomyPlate+'</div>',
