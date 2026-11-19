@@ -1,4 +1,4 @@
-const CACHE_NAME = 'muscle-codex-shell-v17';
+const CACHE_NAME = 'muscle-codex-shell-v18';
 const APP_FILES = [
   './manifest.webmanifest',
   './icons/favicon-32.png',
