@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <style>
-    :root{--img1:url(MUSCLE_CODEX_IMAGES["f2697e1f56c7b809"]);--img2:url(MUSCLE_CODEX_IMAGES["4fbdf5747c64d6a1"]);--img3:url(MUSCLE_CODEX_IMAGES["65a50f03d1e15701"]);--paper:#d8c49a;--paper2:#eadbb8;--ink:#21170f;--muted:#6e5b43;--line:#927957;--red:#7f241b;--red2:#a94431;--blue:#2c5367;--gold:#aa7f31;--shadow:rgba(44,25,11,.28);--safe:env(safe-area-inset-bottom,0px)}
+    :root{--img1:url('images/hero-dynamic.webp');--img2:url('images/hero-dynamic.webp');--img3:url('images/hero-dynamic.webp');--paper:#d8c49a;--paper2:#eadbb8;--ink:#21170f;--muted:#6e5b43;--line:#927957;--red:#7f241b;--red2:#a94431;--blue:#2c5367;--gold:#aa7f31;--shadow:rgba(44,25,11,.28);--safe:env(safe-area-inset-bottom,0px)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:#302419;min-height:100vh}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.19;background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(55,33,15,.08) 4px),radial-gradient(circle at 20% 10%,transparent 0 30%,rgba(66,34,13,.14) 100%);mix-blend-mode:multiply}
     button,input{font:inherit}.app{width:min(100%,1180px);margin:auto;min-height:100vh;background:linear-gradient(105deg,rgba(255,251,230,.08),transparent 35%),var(--paper);box-shadow:0 0 80px #000;display:grid;grid-template-columns:225px 1fr}
@@ -48,14 +48,14 @@
   </style>
   <style id="hero-image-override">
     .hero-art{
-      background-image:linear-gradient(90deg,var(--paper) 0,transparent 23%),url(MUSCLE_CODEX_IMAGES["17733c4c65b77f07"]) !important;
+      background-image:linear-gradient(90deg,var(--paper) 0,transparent 23%),url("images/hero-dynamic.webp") !important;
       background-size:100% 100%,contain;
       background-position:center,center;
       background-repeat:no-repeat;
     }
     @media(max-width:850px){
       .hero-art{
-        background-image:linear-gradient(0deg,var(--paper) 0,transparent 24%),url(MUSCLE_CODEX_IMAGES["17733c4c65b77f07"]) !important;
+        background-image:linear-gradient(0deg,var(--paper) 0,transparent 24%),url("images/movements/rdl-start.webp") !important;
       }
     }
   </style>
@@ -196,14 +196,14 @@
   </style>
   <style id="hero-image-reference-v2">
     .hero-art{
-      background-image:linear-gradient(90deg,var(--paper) 0,transparent 23%),url(MUSCLE_CODEX_IMAGES["e58fde68d256f198"]) !important;
+      background-image:linear-gradient(90deg,var(--paper) 0,transparent 23%),url("images/movements/lateral-start.webp") !important;
       background-size:100% 100%,contain;
       background-position:center,center;
       background-repeat:no-repeat;
     }
     @media(max-width:850px){
       .hero-art{
-        background-image:linear-gradient(0deg,var(--paper) 0,transparent 24%),url(MUSCLE_CODEX_IMAGES["e58fde68d256f198"]) !important;
+        background-image:linear-gradient(0deg,var(--paper) 0,transparent 24%),url("images/hero-dynamic.webp") !important;
       }
     }
   </style>
@@ -243,11 +243,8 @@
   </main>
 </div>
 <nav class="bottom-nav" aria-label="Mobile navigation"><button class="active" data-page="today">Today</button><button data-page="program">Program</button></nav>
-<dialog id="exerciseDialog"><div class="modal-grid"><div class="modal-art" role="img" aria-label="Targeted male muscle anatomy study" data-label="Upper chest · clavicular pectoralis"><img id="muscleArt" alt="Upper chest anatomy study" src=MUSCLE_CODEX_IMAGES["e3cf0a58d7fd1c87"]></div><div class="modal-content"><button class="close" aria-label="Close exercise study">×</button><span class="eyebrow">ANATOMICAL EXERCISE STUDY</span><h2 id="dialogTitle">Incline Dumbbell Press</h2><p id="dialogTarget">Primary: clavicular pectoralis major · Secondary: anterior deltoid, triceps</p><div class="tabs"><button class="active" data-tab="anatomy">Anatomy</button><button data-tab="biomech">Biomechanics</button><button data-tab="flow">Force Flow</button><button data-tab="technique">Technique</button><button data-tab="log">Log</button></div><div id="tabContent"></div></div></div></dialog>
+<dialog id="exerciseDialog"><div class="modal-grid"><div class="modal-art" role="img" aria-label="Targeted male muscle anatomy study" data-label="Upper chest · clavicular pectoralis"><img id="muscleArt" alt="Upper chest anatomy study" src="images/movements/curl-start.webp"></div><div class="modal-content"><button class="close" aria-label="Close exercise study">×</button><span class="eyebrow">ANATOMICAL EXERCISE STUDY</span><h2 id="dialogTitle">Incline Dumbbell Press</h2><p id="dialogTarget">Primary: clavicular pectoralis major · Secondary: anterior deltoid, triceps</p><div class="tabs"><button class="active" data-tab="anatomy">Anatomy</button><button data-tab="biomech">Biomechanics</button><button data-tab="flow">Force Flow</button><button data-tab="technique">Technique</button><button data-tab="log">Log</button></div><div id="tabContent"></div></div></div></dialog>
 <div class="toast" id="toast" role="status"></div>
-<script src="image-assets-1.js"></script>
-<script src="image-assets-2.js"></script>
-<script src="image-assets-3.js"></script>
 <script>
 const baseExercises=[
  {name:'Incline Dumbbell Press',target:'Upper chest · anterior deltoid · triceps',primary:'Clavicular pectoralis major',joint:'Shoulder horizontal adduction with a flexion component, plus elbow extension.',force:'Gravity pulls the dumbbells downward. The upper chest drives the humerus upward and inward while the triceps extend the elbows.',path:['Hands','Forearms','Elbows','Shoulder','Upper chest'],leak:'Shoulders rolling forward, wrists bending back, or pressing too vertically.',cue:'Set the shoulder blades, keep wrists stacked, and press upward with a slight inward intention.'},
@@ -314,9 +311,9 @@ function renderWeek(){
 }
 function renderProgress(){const data=[['Chest',86],['Back',92],['Delts',78],['Glutes',88],['Quads',80],['Hams',72],['Arms',95]];$('#coverage').innerHTML=data.map(x=>`<div class="coverage-row"><span>${x[0]}</span><div class="bar"><i style="width:${x[1]}%"></i></div><b>${x[1]}</b></div>`).join('');$('#history').innerHTML=Array.from({length:84},(_,i)=>`<i class="${i%9===0?'':i%4===0?'mid':'hot'}"></i>`).join('')}
 const dialog=$('#exerciseDialog');$('.close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-const motionImages=[[MUSCLE_CODEX_IMAGES["1012a6d1b79b7562"],MUSCLE_CODEX_IMAGES["3a7cc5ea4169ef02"]],[MUSCLE_CODEX_IMAGES["5b16e2c3d8dae725"],MUSCLE_CODEX_IMAGES["34b89870624e9517"]],[MUSCLE_CODEX_IMAGES["5b21ec77edc987eb"],"images/paused-romanian-deadlift-bottom.webp"],[MUSCLE_CODEX_IMAGES["1637dbd9c6825d9a"],MUSCLE_CODEX_IMAGES["3c360ce6528989f7"]],[MUSCLE_CODEX_IMAGES["9203d00341dde2b4"],MUSCLE_CODEX_IMAGES["a1c09c32db46bc5b"]],[MUSCLE_CODEX_IMAGES["f0b12280beb287c1"],MUSCLE_CODEX_IMAGES["b2ed4f8eeda0af0a"]],[MUSCLE_CODEX_IMAGES["b897fc9e5d79c5cd"],MUSCLE_CODEX_IMAGES["f8accee51ef810c0"]]];
-const artImages=[MUSCLE_CODEX_IMAGES["e3cf0a58d7fd1c87"],MUSCLE_CODEX_IMAGES["7ffa2ff2a784911a"],MUSCLE_CODEX_IMAGES["209dda6330337ff5"],MUSCLE_CODEX_IMAGES["1b77e2663093e304"],MUSCLE_CODEX_IMAGES["70848e7f635a57be"],MUSCLE_CODEX_IMAGES["6937b7475e0efb56"],MUSCLE_CODEX_IMAGES["6a68deafd22f2b36"],MUSCLE_CODEX_IMAGES["c32ca60092b27721"]];
-const weeklyArtImages=[MUSCLE_CODEX_IMAGES["1cc49be9ce3b5cd1"],MUSCLE_CODEX_IMAGES["c17242fe2e0d6db4"],MUSCLE_CODEX_IMAGES["97d2ddc5d82406cc"],MUSCLE_CODEX_IMAGES["919d4689f8bd954e"],MUSCLE_CODEX_IMAGES["2e0a7de258c50700"],MUSCLE_CODEX_IMAGES["bd6ef71a03fb2ef9"],MUSCLE_CODEX_IMAGES["492da75865bbe01f"]];
+const motionImages=[["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/paused-romanian-deadlift-bottom.webp"],["images/movements/lateral-start.webp","images/movements/hack-start.webp"],["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/movements/lateral-start.webp"]];
+const artImages=["images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
+const weeklyArtImages=["images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp"];
 const atlasCharacterViews={front:'images/atlas-character-front.webp',back:'images/atlas-character-back.webp'};
 Object.defineProperties(atlasCharacterViews,{
  torsoFront:{get(){return atlasCharacterViews.front}},
@@ -374,9 +371,9 @@ const atlasLabelPoints=[
  [43,52],[40,50],[47,66],[43,65],[40,65],[45,70],
  [43,64],[47,64],[44,81],[45,87]
 ];
-const atlasMuscleImages=[MUSCLE_CODEX_IMAGES["14db63efbe6760fb"],MUSCLE_CODEX_IMAGES["8ea05d34a30f4d59"],MUSCLE_CODEX_IMAGES["e1e681a12ebdb116"],MUSCLE_CODEX_IMAGES["c82832b81db9b34b"],MUSCLE_CODEX_IMAGES["3bcc786988ab73cc"],MUSCLE_CODEX_IMAGES["398fcc4ca1386c9e"],MUSCLE_CODEX_IMAGES["397e4e0a6ebc7544"],MUSCLE_CODEX_IMAGES["79fe4b2627b3d1a4"],MUSCLE_CODEX_IMAGES["c365a52e681da0b6"],MUSCLE_CODEX_IMAGES["52465bf57133c237"],MUSCLE_CODEX_IMAGES["77cba84bb993ee8d"],MUSCLE_CODEX_IMAGES["78882f3b2c793601"],MUSCLE_CODEX_IMAGES["5b26d07c88e5f4fd"],MUSCLE_CODEX_IMAGES["dab299776a6cecfa"],MUSCLE_CODEX_IMAGES["17490326e915d5c6"],MUSCLE_CODEX_IMAGES["b9cbc0325d74e7ec"],MUSCLE_CODEX_IMAGES["3445bb9aa31f60ea"],MUSCLE_CODEX_IMAGES["8f1ab116a7f684a5"],MUSCLE_CODEX_IMAGES["a4e9a08b3b5ac16d"],MUSCLE_CODEX_IMAGES["138a3a9cde04a36a"],MUSCLE_CODEX_IMAGES["80d8ea6eddac7c66"],MUSCLE_CODEX_IMAGES["ca042728d50403f7"],MUSCLE_CODEX_IMAGES["d747458029e7ac36"],MUSCLE_CODEX_IMAGES["3d22263d3b797cad"],MUSCLE_CODEX_IMAGES["0bd42c6a19cbbcbe"],MUSCLE_CODEX_IMAGES["40ecbb2da7f34022"],MUSCLE_CODEX_IMAGES["c0a4adb0a444383e"],MUSCLE_CODEX_IMAGES["8765265776863bdd"],MUSCLE_CODEX_IMAGES["a5dc5c19096f1b88"],MUSCLE_CODEX_IMAGES["450e055e9636dc43"],MUSCLE_CODEX_IMAGES["3b25f5b3f39d3191"],MUSCLE_CODEX_IMAGES["d4dbb962d7a1a1b6"],MUSCLE_CODEX_IMAGES["1ebc3f14ae30afac"],MUSCLE_CODEX_IMAGES["460e37ebfcf65894"],MUSCLE_CODEX_IMAGES["423a621197ca0354"]];
-const atlasMuscleImagesRefined=[MUSCLE_CODEX_IMAGES["db5b98f36e090c8e"],MUSCLE_CODEX_IMAGES["7c5272c46b2a64f5"],MUSCLE_CODEX_IMAGES["66e64df6b332e454"],MUSCLE_CODEX_IMAGES["74c7f53f7f101178"],MUSCLE_CODEX_IMAGES["8e1706320746a9c5"],MUSCLE_CODEX_IMAGES["7070dea34ae66edd"],MUSCLE_CODEX_IMAGES["817248e8db335fca"],MUSCLE_CODEX_IMAGES["58df3e2dafc6da26"],MUSCLE_CODEX_IMAGES["6892208ea61ca171"],MUSCLE_CODEX_IMAGES["703ac742738b916f"],MUSCLE_CODEX_IMAGES["2350e6527a48ea6f"],MUSCLE_CODEX_IMAGES["417e9e662631508a"],MUSCLE_CODEX_IMAGES["8c1ac24460933780"],MUSCLE_CODEX_IMAGES["0cd72c51970a6245"],MUSCLE_CODEX_IMAGES["99fb92d3c342223b"],MUSCLE_CODEX_IMAGES["c27f1fb1343d0e67"],MUSCLE_CODEX_IMAGES["79a58f4ff662a1c7"],MUSCLE_CODEX_IMAGES["f9b435cf511c6cd2"],MUSCLE_CODEX_IMAGES["04cd788992393550"],MUSCLE_CODEX_IMAGES["0ef3d5b7f458a98a"],MUSCLE_CODEX_IMAGES["0d1aba3028003b93"],MUSCLE_CODEX_IMAGES["f78dc031f8d65a98"],MUSCLE_CODEX_IMAGES["2369f8eb9cf27849"],MUSCLE_CODEX_IMAGES["68b0b03c862dd7fb"],MUSCLE_CODEX_IMAGES["81674b5b2f4a6aaf"],MUSCLE_CODEX_IMAGES["85e215cf4c49ceb6"],MUSCLE_CODEX_IMAGES["7855157743ab3136"],MUSCLE_CODEX_IMAGES["1c9cfabd6d60a185"],MUSCLE_CODEX_IMAGES["5232642fc1e748b2"],MUSCLE_CODEX_IMAGES["c8208be1f69a7ab2"],MUSCLE_CODEX_IMAGES["9bc140db5e8646a2"],MUSCLE_CODEX_IMAGES["31feb95f3e6b71f1"],MUSCLE_CODEX_IMAGES["ec2e4094268677b7"],MUSCLE_CODEX_IMAGES["86dba96899dfe419"],MUSCLE_CODEX_IMAGES["beeaf019fc518323"]];
-const atlasMuscleImagesCorrected=[MUSCLE_CODEX_IMAGES["db5b98f36e090c8e"],MUSCLE_CODEX_IMAGES["7c5272c46b2a64f5"],MUSCLE_CODEX_IMAGES["88cf585aabfe0caa"],MUSCLE_CODEX_IMAGES["74c7f53f7f101178"],MUSCLE_CODEX_IMAGES["8e1706320746a9c5"],MUSCLE_CODEX_IMAGES["7070dea34ae66edd"],MUSCLE_CODEX_IMAGES["817248e8db335fca"],MUSCLE_CODEX_IMAGES["6460cb0e31d62472"],MUSCLE_CODEX_IMAGES["81106589f13f5079"],MUSCLE_CODEX_IMAGES["1796784f26b36bf7"],MUSCLE_CODEX_IMAGES["ca1b72e3215e69b2"],MUSCLE_CODEX_IMAGES["5aa7e0ad4f67b643"],MUSCLE_CODEX_IMAGES["8c1ac24460933780"],MUSCLE_CODEX_IMAGES["0cd72c51970a6245"],MUSCLE_CODEX_IMAGES["99fb92d3c342223b"],MUSCLE_CODEX_IMAGES["c27f1fb1343d0e67"],MUSCLE_CODEX_IMAGES["b38a241844b992eb"],MUSCLE_CODEX_IMAGES["c37cc79750be034c"],MUSCLE_CODEX_IMAGES["b0e425f8c453c3bd"],MUSCLE_CODEX_IMAGES["d44c98db92358841"],MUSCLE_CODEX_IMAGES["f52af359cfa5c3b6"],MUSCLE_CODEX_IMAGES["4224baf74e1df49c"],MUSCLE_CODEX_IMAGES["a1ae4ea9871a3559"],MUSCLE_CODEX_IMAGES["e9cdd483be862ba4"],MUSCLE_CODEX_IMAGES["06125823283d784e"],MUSCLE_CODEX_IMAGES["e9c3e60be5e1934d"],MUSCLE_CODEX_IMAGES["62a5eabd2dbbcdd1"],MUSCLE_CODEX_IMAGES["1c9cfabd6d60a185"],MUSCLE_CODEX_IMAGES["5232642fc1e748b2"],MUSCLE_CODEX_IMAGES["c8208be1f69a7ab2"],MUSCLE_CODEX_IMAGES["9bc140db5e8646a2"],MUSCLE_CODEX_IMAGES["43197471ac635b0b"],MUSCLE_CODEX_IMAGES["f73e1c92c1109bd7"],MUSCLE_CODEX_IMAGES["86dba96899dfe419"],MUSCLE_CODEX_IMAGES["beeaf019fc518323"]];
+const atlasMuscleImages=["images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp"];
+const atlasMuscleImagesRefined=["images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp"];
+const atlasMuscleImagesCorrected=["images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp","images/atlas-character-front.webp","images/atlas-character-back.webp"];
 function atlasMuscleView(index){
  if(index<6)return 'Torso · anterior';
  if(index<13)return 'Back · posterior';
@@ -402,9 +399,9 @@ function renderAtlasCharacter(m){
  if(overlay)overlay.innerHTML=`<path class="atlas-note-line" d="M ${targetX} ${targetY} Q ${elbowX} ${targetY-1} ${lineEndX} ${labelY+1}"/><circle class="atlas-note-dot" cx="${targetX}" cy="${targetY}" r=".9"/><text class="atlas-note-label" x="${labelX}" y="${labelY}" text-anchor="${anchor}">${m.name}</text>`;
 }
 const artLabels=['Upper chest · clavicular pectoralis','Back · latissimus dorsi','Posterior thigh · hamstrings','Shoulder · lateral deltoid','Anterior thigh · quadriceps','Upper arm · biceps brachii','Posterior arm · triceps brachii','Lower leg · gastrocnemius and soleus'];
-weeklyArtImages[3]=MUSCLE_CODEX_IMAGES["e9e0d54c8427563d"];
-weeklyArtImages[5]=MUSCLE_CODEX_IMAGES["775f2c93e3aeb161"];
-const motionCharacterImages=[MUSCLE_CODEX_IMAGES["322970f144c08b96"],MUSCLE_CODEX_IMAGES["a2b9c872cf4213e9"],MUSCLE_CODEX_IMAGES["b64bc994e0f718f0"],MUSCLE_CODEX_IMAGES["cae7a1edda13ccf9"],MUSCLE_CODEX_IMAGES["1330bac091182e29"],MUSCLE_CODEX_IMAGES["19661311be109088"],MUSCLE_CODEX_IMAGES["232174462347d829"]];
+weeklyArtImages[3]="images/movements/curl-start.webp";
+weeklyArtImages[5]="images/movements/triceps-start.webp";
+const motionCharacterImages=["images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp"];
 motionImages.splice(0,motionImages.length,...motionCharacterImages.map(src=>[src,src]));
 const studyCharacterArtIndices=[0,6,31,14,28,19,22,33];
 artImages.splice(0,artImages.length,...studyCharacterArtIndices.map(index=>atlasMuscleImagesCorrected[index]));
@@ -441,133 +438,133 @@ function renderTab(tab){
 $('#sessionBtn').onclick=()=>{if(!running){running=true;startTime=Date.now();$('#sessionBtn').textContent='Pause';tick=setInterval(()=>{const s=Math.floor((Date.now()-startTime)/1000);$('#timer').textContent=`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`},1000);toast('Session begun — move with intention')}else{running=false;clearInterval(tick);$('#sessionBtn').textContent='Resume';toast('Session paused')}};
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900)}
 /* Physique reference update · September 2026 */
-const physiqueWeeklyImages=[MUSCLE_CODEX_IMAGES["9d78dd058a53a6fa"],MUSCLE_CODEX_IMAGES["093326beed4308d9"],MUSCLE_CODEX_IMAGES["9e049a1284507b08"],MUSCLE_CODEX_IMAGES["3d2ea11d0422169e"],MUSCLE_CODEX_IMAGES["27116ed8c9802753"],MUSCLE_CODEX_IMAGES["13dabfb7c8e3a4d3"],MUSCLE_CODEX_IMAGES["a0285ac73cc74c62"]];
+const physiqueWeeklyImages=["images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp"];
 weeklyArtImages.splice(0,weeklyArtImages.length,...physiqueWeeklyImages);
-const physiqueAtlasMuscleImages=[MUSCLE_CODEX_IMAGES["cf8743fdf025f39f"],MUSCLE_CODEX_IMAGES["19bddd936c9c6caa"],MUSCLE_CODEX_IMAGES["7d973ef1d19dee38"],MUSCLE_CODEX_IMAGES["a26d0b10eed4b765"],MUSCLE_CODEX_IMAGES["da0d22b9ffdf7489"],MUSCLE_CODEX_IMAGES["23727f7e18b086a6"],MUSCLE_CODEX_IMAGES["2e1b0e0ec379fab1"],MUSCLE_CODEX_IMAGES["fcd55ffb597a9205"],MUSCLE_CODEX_IMAGES["bb85e96841af1156"],MUSCLE_CODEX_IMAGES["e69333a5878e36f1"],MUSCLE_CODEX_IMAGES["a31ba2388e9851db"],MUSCLE_CODEX_IMAGES["967be10f4845534c"],MUSCLE_CODEX_IMAGES["38826e75f5ca844f"],MUSCLE_CODEX_IMAGES["7f109d0be1d7691d"],MUSCLE_CODEX_IMAGES["8eb6d8357e590e8b"],MUSCLE_CODEX_IMAGES["49d99f717a231b8b"],MUSCLE_CODEX_IMAGES["729d808ddf197b7a"],MUSCLE_CODEX_IMAGES["efe879d23f50c6ab"],MUSCLE_CODEX_IMAGES["24d52aea0c66ac9e"],MUSCLE_CODEX_IMAGES["a30517c3f9cdfe6c"],MUSCLE_CODEX_IMAGES["63a8edb3d938f4b1"],MUSCLE_CODEX_IMAGES["e85e27daa97bd78b"],MUSCLE_CODEX_IMAGES["a3282e18245bdc12"],MUSCLE_CODEX_IMAGES["f42319dd301b4e4b"],MUSCLE_CODEX_IMAGES["ad93a63c9b57f07e"],MUSCLE_CODEX_IMAGES["a8e24c494436e4be"],MUSCLE_CODEX_IMAGES["ce0180409c60b9ca"],MUSCLE_CODEX_IMAGES["c568225d6ae2350a"],MUSCLE_CODEX_IMAGES["fd309ced84a98d6b"],MUSCLE_CODEX_IMAGES["0175ecc4bdaf7a36"],MUSCLE_CODEX_IMAGES["7df279db72341a19"],MUSCLE_CODEX_IMAGES["8eb7f8e2519083fd"],MUSCLE_CODEX_IMAGES["38a9170587d89ddf"],MUSCLE_CODEX_IMAGES["ed1b1d11249d396a"],MUSCLE_CODEX_IMAGES["e60913cff20759b2"]];
+const physiqueAtlasMuscleImages=["images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp","images/movements/incline-start.webp","images/movements/pulldown-start.webp","images/movements/rdl-start.webp","images/movements/lateral-start.webp","images/movements/hack-start.webp","images/movements/curl-start.webp","images/movements/triceps-start.webp"];
 atlasMuscleImagesCorrected.splice(0,atlasMuscleImagesCorrected.length,...physiqueAtlasMuscleImages);
 atlasCharacterViews.front=physiqueWeeklyImages[4];
 atlasCharacterViews.back=physiqueWeeklyImages[2];
-const physiqueMotionImages=[[MUSCLE_CODEX_IMAGES["b9be03ba0edefcd8"],MUSCLE_CODEX_IMAGES["20d10925a9d8d5db"]],["data:image/webp;base64,",MUSCLE_CODEX_IMAGES["8ec3066d4a9dd400"]],[MUSCLE_CODEX_IMAGES["9485ef56be90ef58"],MUSCLE_CODEX_IMAGES["cfede4c7d9b41817"]],[MUSCLE_CODEX_IMAGES["21c41492884d2ccc"],MUSCLE_CODEX_IMAGES["0d7f8ce09c1634a9"]],[MUSCLE_CODEX_IMAGES["6361b60e85dc4d73"],MUSCLE_CODEX_IMAGES["208b310fe1b57f08"]],[MUSCLE_CODEX_IMAGES["d08754879c390e4f"],MUSCLE_CODEX_IMAGES["5ea830059583c60b"]],[MUSCLE_CODEX_IMAGES["f4da463d481df526"],MUSCLE_CODEX_IMAGES["1c99ac1c8a0a0293"]]];
+const physiqueMotionImages=[["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["data:image/webp;base64,","images/movements/rdl-start.webp"],["images/movements/lateral-start.webp","images/movements/hack-start.webp"],["images/movements/curl-start.webp","images/movements/triceps-start.webp"],["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],["images/movements/rdl-start.webp","images/movements/lateral-start.webp"],["images/movements/hack-start.webp","images/movements/curl-start.webp"]];
 motionImages.splice(0,motionImages.length,...physiqueMotionImages);
 artImages.splice(0,artImages.length,...studyCharacterArtIndices.map(index=>atlasMuscleImagesCorrected[index]));
-const day3PosteriorChainCorrected=MUSCLE_CODEX_IMAGES["08e28f042d1328bc"];
+const day3PosteriorChainCorrected="images/movements/triceps-start.webp";
 weeklyArtImages[2]=day3PosteriorChainCorrected;
 const weeklyEditorialPoseImages=[
-MUSCLE_CODEX_IMAGES["276b9768776ad423"],
-MUSCLE_CODEX_IMAGES["17b5fd2ed85f48dd"],
-MUSCLE_CODEX_IMAGES["d8d6f840b3e59cd4"],
-MUSCLE_CODEX_IMAGES["6093e1c037592834"]
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp"
 ];
 weeklyArtImages[0]=weeklyEditorialPoseImages[0];
 weeklyArtImages[2]=weeklyEditorialPoseImages[1];
 weeklyArtImages[3]=weeklyEditorialPoseImages[2];
 weeklyArtImages[5]=weeklyEditorialPoseImages[3];
 const weeklyFaceRefinedImages=[
-MUSCLE_CODEX_IMAGES["5b22941679eed1a5"],
-MUSCLE_CODEX_IMAGES["7c381612ab1bccc9"]
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp"
 ];
 weeklyArtImages[3]=weeklyFaceRefinedImages[0];
 weeklyArtImages[5]=weeklyFaceRefinedImages[1];
 const identityLockedWeeklyImages=[
-MUSCLE_CODEX_IMAGES["a0a3a6a03307aa45"],
-MUSCLE_CODEX_IMAGES["f55151b9c70768be"],
-MUSCLE_CODEX_IMAGES["0649193ba9ada4d0"],
-MUSCLE_CODEX_IMAGES["c81ef11cbfee95e4"],
-MUSCLE_CODEX_IMAGES["06649426f4fc9773"]
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp"
 ];
 weeklyArtImages[0]=identityLockedWeeklyImages[0];
 weeklyArtImages[1]=identityLockedWeeklyImages[1];
 weeklyArtImages[2]=identityLockedWeeklyImages[2];
 weeklyArtImages[4]=identityLockedWeeklyImages[3];
 weeklyArtImages[6]=identityLockedWeeklyImages[4];
-const shirtlessDayThreeCard=MUSCLE_CODEX_IMAGES["17b5fd2ed85f48dd"];
+const shirtlessDayThreeCard="images/movements/hack-start.webp";
 weeklyArtImages[2]=shirtlessDayThreeCard;
 const identityAtlasMuscleImages=[
-MUSCLE_CODEX_IMAGES["7cda469904c6c90e"],
-MUSCLE_CODEX_IMAGES["7b80e910af33ccfa"],
-MUSCLE_CODEX_IMAGES["f630e0437c428097"],
-MUSCLE_CODEX_IMAGES["5e5b8f2e37ee36b5"],
-MUSCLE_CODEX_IMAGES["dfd394feca10baf6"],
-MUSCLE_CODEX_IMAGES["d3caf03575af7653"],
-MUSCLE_CODEX_IMAGES["950ef260b721c9d9"],
-MUSCLE_CODEX_IMAGES["e95cbae4cebcebda"],
-MUSCLE_CODEX_IMAGES["0756f73a2f1a14ac"],
-MUSCLE_CODEX_IMAGES["f894ded263a10abb"],
-MUSCLE_CODEX_IMAGES["18a7b186b6c7475e"],
-MUSCLE_CODEX_IMAGES["003580bf6635f7d2"],
-MUSCLE_CODEX_IMAGES["ad25ac181233c78b"],
-MUSCLE_CODEX_IMAGES["d44fa2506ff707ba"],
-MUSCLE_CODEX_IMAGES["f8aceb5c9aae7e50"],
-MUSCLE_CODEX_IMAGES["0bd5786cbf2fed37"],
-MUSCLE_CODEX_IMAGES["e00013ed5e39b4e6"],
-MUSCLE_CODEX_IMAGES["1bb3a6ba8ab01c53"],
-MUSCLE_CODEX_IMAGES["3117391c93a26220"],
-MUSCLE_CODEX_IMAGES["0b7da60ab9df302a"],
-MUSCLE_CODEX_IMAGES["92b34470afa2eeb0"],
-MUSCLE_CODEX_IMAGES["4bd2547dd86510aa"],
-MUSCLE_CODEX_IMAGES["5f5a67778630c81b"],
-MUSCLE_CODEX_IMAGES["57754ed667ce3562"],
-MUSCLE_CODEX_IMAGES["fa470bf512eff34a"],
-MUSCLE_CODEX_IMAGES["121650d6d4f2a3c3"],
-MUSCLE_CODEX_IMAGES["a9b1782aa0c8558a"],
-MUSCLE_CODEX_IMAGES["98fc0adb624a8f49"],
-MUSCLE_CODEX_IMAGES["f35726bf512aff3c"],
-MUSCLE_CODEX_IMAGES["95c3e0e7a6402d2e"],
-MUSCLE_CODEX_IMAGES["453f369bf7c22f15"],
-MUSCLE_CODEX_IMAGES["78aa486dbf50aeae"],
-MUSCLE_CODEX_IMAGES["c8c47847a5e32038"],
-MUSCLE_CODEX_IMAGES["35def6fa749bb3f1"],
-MUSCLE_CODEX_IMAGES["3e77f3ad186f673f"]
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp"
 ];
 atlasMuscleImagesCorrected.splice(0,atlasMuscleImagesCorrected.length,...identityAtlasMuscleImages);
 artImages.splice(0,artImages.length,...studyCharacterArtIndices.map(index=>identityAtlasMuscleImages[index]));
 const stableIntegratedAtlasImages=[
-MUSCLE_CODEX_IMAGES["cf8743fdf025f39f"],
-MUSCLE_CODEX_IMAGES["19bddd936c9c6caa"],
-MUSCLE_CODEX_IMAGES["7d973ef1d19dee38"],
-MUSCLE_CODEX_IMAGES["a26d0b10eed4b765"],
-MUSCLE_CODEX_IMAGES["da0d22b9ffdf7489"],
-MUSCLE_CODEX_IMAGES["23727f7e18b086a6"],
-MUSCLE_CODEX_IMAGES["2e1b0e0ec379fab1"],
-MUSCLE_CODEX_IMAGES["fcd55ffb597a9205"],
-MUSCLE_CODEX_IMAGES["bb85e96841af1156"],
-MUSCLE_CODEX_IMAGES["e69333a5878e36f1"],
-MUSCLE_CODEX_IMAGES["a31ba2388e9851db"],
-MUSCLE_CODEX_IMAGES["967be10f4845534c"],
-MUSCLE_CODEX_IMAGES["38826e75f5ca844f"],
-MUSCLE_CODEX_IMAGES["7f109d0be1d7691d"],
-MUSCLE_CODEX_IMAGES["8eb6d8357e590e8b"],
-MUSCLE_CODEX_IMAGES["49d99f717a231b8b"],
-MUSCLE_CODEX_IMAGES["729d808ddf197b7a"],
-MUSCLE_CODEX_IMAGES["efe879d23f50c6ab"],
-MUSCLE_CODEX_IMAGES["24d52aea0c66ac9e"],
-MUSCLE_CODEX_IMAGES["a30517c3f9cdfe6c"],
-MUSCLE_CODEX_IMAGES["63a8edb3d938f4b1"],
-MUSCLE_CODEX_IMAGES["e85e27daa97bd78b"],
-MUSCLE_CODEX_IMAGES["a3282e18245bdc12"],
-MUSCLE_CODEX_IMAGES["f42319dd301b4e4b"],
-MUSCLE_CODEX_IMAGES["ad93a63c9b57f07e"],
-MUSCLE_CODEX_IMAGES["a8e24c494436e4be"],
-MUSCLE_CODEX_IMAGES["ce0180409c60b9ca"],
-MUSCLE_CODEX_IMAGES["c568225d6ae2350a"],
-MUSCLE_CODEX_IMAGES["fd309ced84a98d6b"],
-MUSCLE_CODEX_IMAGES["0175ecc4bdaf7a36"],
-MUSCLE_CODEX_IMAGES["7df279db72341a19"],
-MUSCLE_CODEX_IMAGES["8eb7f8e2519083fd"],
-MUSCLE_CODEX_IMAGES["38a9170587d89ddf"],
-MUSCLE_CODEX_IMAGES["ed1b1d11249d396a"],
-MUSCLE_CODEX_IMAGES["e60913cff20759b2"]
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp",
+"images/movements/curl-start.webp",
+"images/movements/triceps-start.webp",
+"images/movements/incline-start.webp",
+"images/movements/pulldown-start.webp",
+"images/movements/rdl-start.webp",
+"images/movements/lateral-start.webp",
+"images/movements/hack-start.webp"
 ];
 atlasMuscleImagesCorrected.splice(0,atlasMuscleImagesCorrected.length,...stableIntegratedAtlasImages);
 artImages.splice(0,artImages.length,...studyCharacterArtIndices.map(index=>stableIntegratedAtlasImages[index]));
 const identityMotionImages=[
-[MUSCLE_CODEX_IMAGES["13f391ab435a0ec3"],MUSCLE_CODEX_IMAGES["20aba223f7ddccfb"]],
-[MUSCLE_CODEX_IMAGES["0a4cfc5e1e07a512"],MUSCLE_CODEX_IMAGES["ddea259be2af5d9b"]],
-['data:image/webp;base64,',MUSCLE_CODEX_IMAGES["d42d61a3c5876cbf"]],
-[MUSCLE_CODEX_IMAGES["6217c60dfb18c38f"],MUSCLE_CODEX_IMAGES["58c9a662a434ba2c"]],
-[MUSCLE_CODEX_IMAGES["2f305da19f5da706"],MUSCLE_CODEX_IMAGES["04a607caaf356474"]],
-[MUSCLE_CODEX_IMAGES["4d5b79098c9f5990"],MUSCLE_CODEX_IMAGES["d1a68dece9e33469"]],
-[MUSCLE_CODEX_IMAGES["5efddd0c47466561"],MUSCLE_CODEX_IMAGES["40ab6beaf6287c97"]]
+["images/movements/curl-start.webp","images/movements/triceps-start.webp"],
+["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],
+['data:image/webp;base64,',"images/movements/rdl-start.webp"],
+["images/movements/lateral-start.webp","images/movements/hack-start.webp"],
+["images/movements/curl-start.webp","images/movements/triceps-start.webp"],
+["images/movements/incline-start.webp","images/movements/pulldown-start.webp"],
+["images/movements/rdl-start.webp","images/movements/lateral-start.webp"]
 ];
 motionImages.splice(0,motionImages.length,...identityMotionImages);
 const shirtlessAnatomyMotionImages=[
